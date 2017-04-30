@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.IO;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace CookieAuth
 {
@@ -44,6 +46,7 @@ namespace CookieAuth
         AutomaticAuthenticate = true,
         AutomaticChallenge = true,
         CookieName = "CookieAuthDemo",
+        ExpireTimeSpan = TimeSpan.FromMinutes(10)
       });
 
       app.UseMvcWithDefaultRoute();

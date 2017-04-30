@@ -95,9 +95,19 @@ namespace CookieAuth
     }
 
     [Authorize(Policy = "YouMayPass")]
+    [Produces("text/html")]
     public string Test()
     {
-      return $"Worked {HttpContext.User.Identity.Name}";
+      string returnString = "";
+
+      foreach (var claim in HttpContext.User.Claims)
+      {
+        returnString += claim.Type + " " + claim.Value.ToString() + " <br />";
+      }
+
+      returnString += $" <br /> <br/ > Worked {HttpContext.User.Identity.Name}";
+
+      return returnString;
     }
 
     [Authorize(Policy = "YouMayNotPass")]

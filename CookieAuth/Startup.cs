@@ -39,7 +39,7 @@ namespace CookieAuth
       app.UseCookieAuthentication(new CookieAuthenticationOptions()
       {
         AuthenticationScheme = "TestInstance",
-        LoginPath = new PathString("/Home/Index"),
+        LoginPath = new PathString("/Home/LoginMessage"),
         AccessDeniedPath = new PathString("/Home/FailedAccess"),
         AutomaticAuthenticate = true,
         AutomaticChallenge = true,

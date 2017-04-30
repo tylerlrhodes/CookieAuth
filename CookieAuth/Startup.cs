@@ -42,7 +42,8 @@ namespace CookieAuth
         LoginPath = new PathString("/Home/Index"),
         AccessDeniedPath = new PathString("/Home/FailedAccess"),
         AutomaticAuthenticate = true,
-        AutomaticChallenge = true
+        AutomaticChallenge = true,
+        CookieName = "CookieAuthDemo",
       });
 
       app.UseMvcWithDefaultRoute();

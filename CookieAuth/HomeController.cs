@@ -45,7 +45,11 @@ namespace CookieAuth
 
         var identity = new ClaimsIdentity(claims, "TestInstance");
 
-        await HttpContext.Authentication.SignInAsync("TestInstance", new ClaimsPrincipal(identity), new AuthenticationProperties());
+        await HttpContext.Authentication.SignInAsync("TestInstance", new ClaimsPrincipal(identity),
+          new AuthenticationProperties()
+          {
+            IsPersistent = true
+          });
       }
       return RedirectToAction("Index");
     }

@@ -30,10 +30,21 @@ namespace CookieAuth
       return "<a href=\"/home/test\">Test</a> <br /> <a href=\"/home/test2\">Test 2</a>";
     }
 
+    [Produces("text/html")]
+    public string LoginMessage()
+    {
+      return "You need to login, this link will log you in: <a href=\"/home/login?password=dumb\">log me in</a>"; 
+    }
+
     [HttpGet]
     public async Task<IActionResult> Login(string username, string password)
     {
-      _logger.LogInformation($"{username}, {password}");
+      _logger.LogInformation($"Attempted sign in - {username}, {password}");
+
+      // This is where you would check the username and password against the database
+      // Then you would sign the user in such as below is doing
+      // This creates a cookie sent down to the browser with the Claims
+      // We just check that the password is equal to "dumb"
 
       if (password == "dumb")
       {
